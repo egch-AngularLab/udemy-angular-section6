@@ -1,3 +1,13 @@
+## New Docs
+Dynamic binding
+```html
+<img [src]="image().src" [alt]="image().alt" />
+```
+String interpolation 
+```html
+<h2>{{ title() }}</h2>
+```
+
 # CmpDeepDive
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.0-next.2.

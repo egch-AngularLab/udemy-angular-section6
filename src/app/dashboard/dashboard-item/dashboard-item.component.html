@@ -1,0 +1,11 @@
+<!-- this is meant to be a shared and reusable component -->
+<div class="dashboard-item">
+    <article>
+        <header>
+            <!-- property binding: [] -->
+          <img [src]="image().src" [alt]="image().alt" />
+          <!-- angular string interpolation -->
+          <h2>{{ title() }}</h2>
+        </header>
+      </article>
+</div>
