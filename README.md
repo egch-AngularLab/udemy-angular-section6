@@ -11,6 +11,24 @@ String interpolation
 ### To clarify
 - ngProjectAs
 
+### CSS
+![alt text](docs/css-encapsulation.png)
+
+host selector
+```css
+:host {
+    display: inline-block;
+    padding: 0.65rem 1.35rem;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    background-color: #691ebe;
+    color: white;
+    border: none;
+  }
+```
+
 # CmpDeepDive
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.0-next.2.
