@@ -10,6 +10,7 @@ String interpolation
 
 ### To clarify
 - ngProjectAs
+- :host
 
 ### CSS
 ![alt text](docs/css-encapsulation.png)
