@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-server-status',
@@ -7,7 +7,9 @@ import { Component } from '@angular/core';
   templateUrl: './server-status.component.html',
   styleUrl: './server-status.component.css'
 })
-export class ServerStatusComponent {
+//by implementing this interfaces we are forced to define the specific methods
+//and we well avoid to have wrong behavior in case of typo of the method
+export class ServerStatusComponent implements OnInit {
   //this is kind of enum with a default value ('offline')
   currentStatus:  'online' | 'offline' | 'unknown' = 'offline';
 

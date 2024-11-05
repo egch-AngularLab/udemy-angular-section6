@@ -32,6 +32,7 @@ host selector
 
 ### Methods
 - ngOnInit
+- OnInit
 
 ### References
 [Component Lifecycle](https://angular.dev/guide/components/lifecycle)
