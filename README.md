@@ -30,6 +30,14 @@ host selector
   }
 ```
 
+### Methods
+- ngOnInit
+
+### References
+[Component Lifecycle](https://angular.dev/guide/components/lifecycle)
+
+## Classic Docs
+
 # CmpDeepDive
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.0-next.2.

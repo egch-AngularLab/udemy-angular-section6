@@ -11,7 +11,12 @@ export class ServerStatusComponent {
   //this is kind of enum with a default value ('offline')
   currentStatus:  'online' | 'offline' | 'unknown' = 'offline';
 
-  constructor() {
+  //better to keep your constructor lean
+  constructor() {}
+
+
+  //better to use this vs using constructor for initialization 
+  ngOnInit(){
     setInterval(() => {
       const rnd = Math.random(); //0-1(excluded)
       if(rnd<0.5){
