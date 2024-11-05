@@ -8,5 +8,20 @@ import { Component } from '@angular/core';
   styleUrl: './server-status.component.css'
 })
 export class ServerStatusComponent {
-  currentStatus = 'online';
+  //this is kind of enum with a default value ('offline')
+  currentStatus:  'online' | 'offline' | 'unknown' = 'offline';
+
+  constructor() {
+    setInterval(() => {
+      const rnd = Math.random(); //0-1(excluded)
+      if(rnd<0.5){
+        this.currentStatus = 'online';
+      }else if (rnd<0.9) {
+        this.currentStatus = 'offline';
+      }else{
+        this.currentStatus = 'unknown';
+      }
+      
+    }, 5000);  //it will be updated every 5s
+  }
 }
