@@ -1,6 +1,6 @@
-<form (ngSubmit)="onSubmit(titleInput)">
+<form (ngSubmit)="onSubmit(form)" #form>
   <app-control   label="Title">
-    <input name="title" id="title" #titleInput />
+    <input name="title" id="title"  />
   </app-control>
 
   <app-control  label="Request">
