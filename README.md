@@ -34,6 +34,24 @@ host selector
 - ngOnInit
 - OnInit
 
+### Template Variables
+```html
+<form (ngSubmit)="onSubmit(titleInput)">
+  <app-control   label="Title">
+    <input name="title" id="title" #titleInput />
+  </app-control>
+  ```
+
+  ```Typescript
+  export class NewTicketComponent {
+  onSubmit(titleInput: HTMLInputElement) {
+    console.dir(titleInput);
+  }
+}
+
+
+  ```
+
 ### References
 [Component Lifecycle](https://angular.dev/guide/components/lifecycle)
 
