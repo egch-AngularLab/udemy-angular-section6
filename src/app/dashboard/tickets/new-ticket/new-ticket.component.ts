@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ControlComponent } from "../../../shared/control/control.component";
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { FormsModule } from '@angular/forms';
@@ -11,8 +11,13 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './new-ticket.component.css'
 })
 export class NewTicketComponent {
-  onSubmit(form: HTMLFormElement) {
-    console.dir(HTMLFormElement);
-    form.reset();
+
+  //with this I access to the #form from the corresponding html element
+  @ViewChild('form') form?: ElementRef<HTMLFormElement>;
+
+  onSubmit(title: string, ticketText: string) {
+    console.dir(title);
+    console.dir(ticketText);
+    this.form?.nativeElement.reset();
   }
 }
