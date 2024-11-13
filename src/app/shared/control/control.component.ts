@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, HostListener, inject, input, ViewEncapsulation } from '@angular/core';
+import { Component, contentChild, ContentChild, ElementRef, HostBinding, HostListener, inject, input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -24,10 +24,20 @@ export class ControlComponent {
   //ElementRef gives us a reference to the page
   private el = inject(ElementRef)
 
+  //@ContentChild('input') private control?: ElementRef<HTMLInputElement | HTMLTextAreaElement>
+
+  //alternative way to @ContentChild decorator -> signal
+  private control = contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
+
 
   onClick() {
     console.log('clicked');
     console.log(this.el);
+    //with signal
+    console.log(this.control());
+
+    //with decorator
+    //console.log(this.control);
   }
 
 
