@@ -4,8 +4,10 @@ import {
   inject,
   OnDestroy,
   OnInit,
+  effect,
+  signal,
 } from "@angular/core";
-import { interval } from "rxjs";
+import { interval, single } from "rxjs";
 
 @Component({
   selector: "app-server-status",
@@ -18,23 +20,33 @@ import { interval } from "rxjs";
 //and we well avoid to have wrong behavior in case of typo of the method
 export class ServerStatusComponent implements OnInit {
   //this is kind of enum with a default value ('offline')
-  currentStatus: "online" | "offline" | "unknown" = "offline";
+  //currentStatus: "online" | "offline" | "unknown" = "offline";
+
+
+  //using signal
+  currentStatus = signal<"online" | "offline" | "unknown">('offline');
 
   private destroyRef = inject(DestroyRef);
 
   //better to keep your constructor lean
-  constructor() {}
+  constructor() {
+    effect(() => {
+      console.log(this.currentStatus());
+    });
+
+
+  }
 
   //better to use this vs using constructor for initialization
   ngOnInit() {
     const interval = setInterval(() => {
       const rnd = Math.random(); //0-1(excluded)
       if (rnd < 0.5) {
-        this.currentStatus = "online";
+        this.currentStatus.set('online');
       } else if (rnd < 0.9) {
-        this.currentStatus = "offline";
+        this.currentStatus.set('offline');
       } else {
-        this.currentStatus = "unknown";
+        this.currentStatus.set('unknown');
       }
     }, 5000); //it will be updated every 5s
     this.destroyRef.onDestroy(() => {
@@ -46,3 +58,5 @@ export class ServerStatusComponent implements OnInit {
     console.log("after view unit");
   }
 }
+
+
