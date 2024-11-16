@@ -48,9 +48,17 @@ host selector
     console.dir(titleInput);
   }
 }
-
-
   ```
+
+### first
+Prints true only for the first element.
+```html
+      @for (ticket of tickets; track ticket.id) {
+          <li>
+              <app-ticket/> - {{ $first }}  
+          </li>
+      }
+```
 
 ### References
 [Component Lifecycle](https://angular.dev/guide/components/lifecycle)

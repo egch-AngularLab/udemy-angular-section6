@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, viewChild, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, output, Output, viewChild, ViewChild } from '@angular/core';
 import { ControlComponent } from "../../../shared/control/control.component";
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +12,14 @@ import { FormsModule } from '@angular/forms';
 })
 
 //I implement the interface in order to avoid typo
-export class NewTicketComponent implements OnInit, AfterViewInit{
+export class NewTicketComponent implements OnInit, AfterViewInit {
+
+  add = output<{title: string; text: string}>();
+
+  //alternative way by using the @Output decorator
+  //@Output() add2 = new EventEmitter<{title: string; text: string}>();
+
+
 
     //with this I access to the #form from the corresponding html element
   @ViewChild('form') form?: ElementRef<HTMLFormElement>;
@@ -22,7 +29,6 @@ export class NewTicketComponent implements OnInit, AfterViewInit{
 
 
   ngOnInit(): void {
-    console.log('ONINIT');
     this.form?.nativeElement.reset();
   }
 
@@ -33,8 +39,7 @@ export class NewTicketComponent implements OnInit, AfterViewInit{
 
 
   onSubmit(title: string, ticketText: string) {
-    console.dir(title);
-    console.dir(ticketText);
+    this.add.emit({title: title, text: ticketText});
     this.form?.nativeElement.reset();
   }
 }
