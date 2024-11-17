@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 
 //I implement the interface in order to avoid typo
 export class NewTicketComponent implements OnInit, AfterViewInit {
+  enteredTitle = '';
+  enteredText = '';
 
   add = output<{title: string; text: string}>();
 
@@ -38,8 +40,13 @@ export class NewTicketComponent implements OnInit, AfterViewInit {
   }
 
 
-  onSubmit(title: string, ticketText: string) {
-    this.add.emit({title: title, text: ticketText});
-    this.form?.nativeElement.reset();
+  onSubmit() {
+    this.add.emit({title: this.enteredTitle, text: this.enteredText});
+   // this.form?.nativeElement.reset();
+
+
+   //using 2-ways binding
+   this.enteredTitle = '';
+   this.enteredText = '';
   }
 }
